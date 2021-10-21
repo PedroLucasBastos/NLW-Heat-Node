@@ -1,9 +1,18 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url = "file:./dev.db"
+  url      = "file:./dev.db"
+}
+
+model user {
+  id         String @id @default(uuid())
+  name       String
+  github_id  String
+  avatar_url String
+  login      String
+
+  @@map("users")
 }
