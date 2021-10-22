@@ -6,14 +6,16 @@ class CreateMessageService {
             data:
             {
                 text,
-                user_id
+                user_id,
 
             },
             include: {
                 user: true,
             },
         });
+
+        return message;
     }
 }
 
-export { CreateMessageService }
+export { CreateMessageService };
