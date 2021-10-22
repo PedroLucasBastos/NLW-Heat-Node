@@ -1,9 +1,25 @@
 import "dotenv/config";
 import express from "express";
 import { router } from "./routes";
+import http from "http";
+import cors from "cors";
+import { Server } from "socket.io"
 
 
 const app = express();
+app.use(cors());// habilitando o cors para o app.ts
+
+const serverHttp = http.createServer(app); //criando o server e a coneção com o web socket
+const io = new Server(serverHttp, {
+    cors: {
+        origin: "*"//isso permite que outras fontes, como frontend e mobal se conectem, tanto com o nosso http, como o express, e tanto como com o web socket
+    }
+});
+
+io.on("connection", socket => {
+    console.log(`Usuario connectado no socket${socket.id}`); //essa função fica ouvindo as conecções 
+});
+
 app.use(express.json());
 
 
@@ -19,4 +35,4 @@ app.get("/signin/callback", (request, response) => {
     return response.json(code);
 });
 
-app.listen(4000, () => console.log('listening on port'));
+export { serverHttp, io }
