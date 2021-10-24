@@ -39,6 +39,6 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ---
 
-Feito com ♥ by Rocketseat 👋🏻
+Feito com Rocketseat 🚀
 
 Essa é a parte do backend do projeto.O projeto web e mobal completo se encontram em outro repositorio.
